@@ -1,0 +1,66 @@
+@import './common/var.scss';
+
+$van-checkbox-size: 20PX;
+
+.van-checkbox {
+  overflow: hidden;
+  user-select: none;
+
+  &__icon,
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: $van-checkbox-size;
+  }
+
+  &__icon {
+    .van-icon {
+      font-size: 12PX;
+      color: transparent;
+      text-align: center;
+      line-height: inherit;
+      border: 1PX solid #aaa;
+      width: $van-checkbox-size;
+      height: $van-checkbox-size;
+      box-sizing: border-box;
+    }
+
+    &--round {
+      .van-icon {
+        border-radius: 100%;
+      }
+    }
+
+    &--checked {
+      .van-icon {
+        color: #fff;
+        border-color: $cyan;
+        background-color: $cyan;
+      }
+    }
+
+    &--disabled {
+      .van-icon {
+        color: $background-color;
+        border-color: $border-color;
+        background-color: currentColor;
+      }
+    }
+
+    // &--disabled,&--checked {
+    //   .van-icon {
+    //     border-color: $border-color;
+    //     background-color: $border-color;
+    //   }
+    // }
+  }
+
+  &__label {
+    margin-left: 10PX;
+
+    &--left {
+      float: left;
+      margin: 0 10PX 0 0;
+    }
+  }
+}

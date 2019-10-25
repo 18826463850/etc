@@ -1,0 +1,95 @@
+::-webkit-input-placeholder{
+    color: #CFD6D6
+}
+body{
+    background:#fff;
+    font-size:16PX;
+}
+page,html,#app{
+    height:100%;
+}
+.page{
+    margin:0 auto;
+}
+.van-modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-orange{
+    display:block!important;
+    background:$orange!important;
+    border:none!important;
+    width:100%!important;
+    box-shadow:0 18px 36px rgba(255, 77, 37, 0.32);
+    height:90px!important;
+    line-height:90px!important;
+    &.van-button--disabled{
+        box-shadow: none;
+    }
+}
+
+.btn-default{
+    display:block!important;
+    border:none!important;
+    width:100%!important;
+    height:90px!important;
+    line-height:90px!important;
+    background:-webkit-linear-gradient(left,#00FAC7,#00E3DA)!important; 
+    box-shadow:0 18px 36px  rgba(0,0,0,0.08);
+    &.van-button--disabled{
+        box-shadow: none;
+        background:#00E4C2!important;
+    }
+}
+
+.btn-yellow{
+    display:block!important;
+    border:none!important;
+    width:100%!important;
+    height:90px!important;
+    line-height:90px!important;
+    background:-webkit-linear-gradient(right,rgb(243, 243, 230),rgb(238, 225, 191))!important; 
+    box-shadow:0 18px 36px  rgba(0,0,0,0.08);
+    &.van-button--disabled{
+        box-shadow: none;
+        background:rgb(241, 231, 203)4C2!important;
+    }
+}
+
+.btn-green{
+    background: #07C160!important;
+    color: #FFFFFF!important;
+    border: none!important;
+}
+
+
+.ui-icon{
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.van-radio{
+    .van-icon-checked{
+        color: #00E0BE!important;
+    }
+}
+
+.btn-pink{
+    display:block!important;
+    background:#f5dcd6!important;
+    border:none!important;
+    width:100%!important;
+    height:90px!important;
+    line-height:90px!important;
+    box-shadow:0 18px 36px rgba(255, 77, 37, 0.18);
+}
+
+.page-bindUnionPay .van-checkbox__icon--checked .van-icon{
+    border-color: #5CA3D9!important;
+    background-color: #5CA3D9!important;
+  }

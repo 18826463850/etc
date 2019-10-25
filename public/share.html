@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<title>赤兔易行</title>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script src="https://sale.flnet.com/cdn/template/mb/js/libs.js"></script>
+<meta name="keywords" content="赤兔易行" />
+<meta name="description" content="赤兔易行 免费申请etc卡">
+<body>
+    <h1>微信分享</h1>
+    <input type="hidden" id="shareImgUrl"  value="https://sale.flnet.com/cdn/images/wxshare.jpg"/>
+    <script type="text/javascript">
+        function bindWxShare(signPackage) {
+
+
+            if (!signPackage) return;
+
+            wx.config({
+                debug: false, // 开启调试模式true、false,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: signPackage.appId, // 必填，公众号的唯一标识
+                timestamp: signPackage.timestamp, // 必填，生成签名的时间戳
+                nonceStr: signPackage.nonceStr || signPackage.noncestr, // 必填，生成签名的随机串
+                signature: signPackage.signature, // 必填，签名，见附录1
+                jsApiList: [
+                    'checkJsApi',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo'
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+
+            //处理验证失败的信息
+            wx.error(function (res) {
+                console.log('验证失败返回的信息:', res);
+            });
+
+
+            wx.ready(function () {
+
+                wx.checkJsApi({
+                    jsApiList: [
+                        'getNetworkType',
+                        'previewImage',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo'
+                    ] // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                });
+
+                var $title = $("title").eq(0);
+                var $desc = $("[name=description]");
+                var $fexiangImgUrl = $("#shareImgUrl");
+                var title = $title.length ? $title.text() : "";
+                var desc = $desc.length ? $desc.attr("content") : "";
+                var imgUrl = $fexiangImgUrl.length ? $fexiangImgUrl.val() : "";
+                var link = window.location.href.split("?")[0];
+                var wxData = {
+                    "title": title, // 分享标题
+                    "desc": desc, // 分享描述
+                    "link": window.location.href, // 分享链接
+                    "imgUrl": imgUrl // 分享图标,
+                };
+
+                var weixin = function (title, link, imgurl, desc) {
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            title: title,
+                            link: link,
+                            imgUrl: imgUrl,
+
+                            success: function () {
+
+                            }
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: title,
+                            desc: desc,
+                            link: link,
+                            imgUrl: imgurl
+                        });
+                        wx.onMenuShareQQ({
+                            title: title,
+                            desc: desc,
+                            link: link,
+                            imgUrl: imgurl
+                        });
+                        wx.onMenuShareWeibo({
+                            title: title,
+                            desc: desc,
+                            link: link,
+                            imgUrl: imgurl
+                        });
+                        //obj.sound();
+                    });
+                };
+
+                //alert(JSON.stringify(wxData));
+                weixin(wxData.title, wxData.link, wxData.imgUrl, wxData.desc);
+
+
+            });
+        }
+        $.ajax({
+
+
+            data:{
+                shareUrl:window.location.href.split('#')[0]
+            },
+            url:"http://api.sit.etc-cloud.com/api/etcWechatShare/wechatShare",
+            success(data){
+
+                if(data && data.code == 200){
+                    data = data.data;
+                    console.log(data);
+                    bindWxShare(data)
+                }
+            }
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>

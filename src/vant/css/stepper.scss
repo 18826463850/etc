@@ -1,0 +1,94 @@
+@import './common/var.scss';
+
+.van-stepper {
+  font-size: 0;
+
+  &__minus,
+  &__plus {
+    width: 40PX;
+    height: 30PX;
+    box-sizing: border-box;
+    background-color: $white;
+    border: 1PX solid $border-color;
+    position: relative;
+    padding: 5PX;
+    vertical-align: middle;
+
+    &::before {
+      width: 9PX;
+      height: 1PX;
+    }
+
+    &::after {
+      width: 1PX;
+      height: 9PX;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #6c6c6c;
+    }
+
+    &:active {
+      background-color: $active-color;
+    }
+
+    &--disabled {
+      background-color: $background-color;
+
+      &::before,
+      &::after {
+        background-color: $gray;
+      }
+    }
+
+    &--disabled:active {
+      background-color: $background-color;
+    }
+  }
+
+  &__minus {
+    border-radius: 2PX 0 0 2PX;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &__plus {
+    border-radius: 0 2PX 2PX 0;
+  }
+
+  &__input {
+    width: 33PX;
+    height: 26PX;
+    padding: 1PX;
+    border: 1PX solid $border-color;
+    border-width: 1PX 0;
+    border-radius: 0;
+    box-sizing: content-box;
+    color: $gray-darker;
+    font-size: 14PX;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-appearance: none;
+
+    &[disabled] {
+      color: $gray;
+      background-color: $background-color;
+    }
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

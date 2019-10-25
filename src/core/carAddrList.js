@@ -1,0 +1,58 @@
+export default [
+    {
+        id:1,
+        name:"粤",
+        value:"粤",
+        title:"粤通卡",
+        selected:'selected',
+        address:"广东省深圳市",
+        disabled:false
+      },
+      {
+        id:2,
+        name:"赣",
+        value:"赣",
+        title:"赣通卡",
+        selected:false,
+        address:"江西省抚州市",
+        disabled:'disabled'
+      },
+
+      {
+        id:3,
+        name:"吉",
+        value:"吉",
+        title:"吉通卡",
+        selected:false,
+        address:"吉林省长春市",
+        disabled:'disabled'
+      },
+      {
+        id:4,
+        name:"湘",
+        value:"湘",
+        title:" 湘通卡",
+        address:"湖南省娄底市",
+        selected:false,
+        disabled:'disabled'
+      }
+      ,
+      {
+        id:5,
+        name:"桂",
+        value:"桂",
+        title:"桂通卡",
+        address:"广西省石洼村",
+        selected:false,
+        disabled:'disabled'
+      },
+      {
+        id:6,
+        name:"贵",
+        value:"贵",
+        title:" 贵通卡",
+        address:"贵州省贵阳市",
+        selected:false,
+        disabled:'disabled'
+      }
+]

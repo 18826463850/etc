@@ -1,0 +1,68 @@
+@import './common/var.scss';
+
+.van-pagination {
+  display: flex;
+  text-align: center;
+  line-height: 40PX;
+  font-size: 14PX;
+
+  &__item {
+    flex: 1;
+    height: 40PX;
+    min-width: 36PX;
+    color: $blue;
+    background-color: $white;
+    box-sizing: border-box;
+    user-select: none;
+
+    &:active {
+      background-color: $blue;
+      color: $white;
+      opacity: 0.8;
+    }
+
+    &::after {
+      border-width: 1PX 0 1PX 1PX;
+    }
+
+    &:last-child::after {
+      border-right-width: 1PX;
+    }
+
+    &--disabled,
+    &--disabled:active {
+      background-color: $background-color;
+      color: $gray-darker;
+      opacity: 0.6;
+    }
+
+    &--active {
+      color: $white;
+      background-color: $blue;
+    }
+  }
+
+  &__prev,
+  &__next {
+    padding: 0 5PX;
+  }
+
+  &__page {
+    flex-grow: 0;
+  }
+
+  &__page-desc {
+    flex: 1;
+    height: 40PX;
+    color: $gray-darker;
+  }
+
+  &--simple {
+    .van-pagination__prev,
+    .van-pagination__next {
+      &::after {
+        border-width: 1PX;
+      }
+    }
+  }
+}

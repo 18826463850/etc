@@ -1,0 +1,8 @@
+/*
+* 针对ipad 转换
+*/
+@function ipv($val) {
+    @return #{round($val*0.6)}px
+}
+
+

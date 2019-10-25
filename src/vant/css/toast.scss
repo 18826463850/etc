@@ -1,0 +1,62 @@
+@import './common/var.scss';
+
+.van-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  color: $white;
+  font-size: 15PX;
+  line-height: 1.2;
+  border-radius: 5PX;
+  word-break: break-all;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: rgba(0, 0, 0, .7);
+
+  /**
+   * should not add pointer-events: none directly to body tag
+   * that will cause unexpected tap-highlight-color in mobile safari
+   */
+  &--unclickable {
+    * {
+      pointer-events: none;
+    }
+  }
+
+  &--text {
+    padding: 12PX;
+    min-width: 220PX;
+  }
+
+  &--default {
+    width: 120PX;
+    min-height: 120PX;
+    padding: 20PX;
+
+    .van-toast__icon {
+      font-size: 50PX;
+    }
+
+    .van-loading {
+      margin: 10PX 0 5PX;
+    }
+
+    .van-toast__text {
+      font-size: 14PX;
+      padding-top: 10PX;
+    }
+  }
+
+  &--top {
+    top: 50PX;
+  }
+
+  &--bottom {
+    top: auto;
+    bottom: 50PX;
+  }
+}
