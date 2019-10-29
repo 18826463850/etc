@@ -1,11 +1,10 @@
 import axios from 'axios'
-import utils from '@/utils';
 import config from '@/config';
 import store from '@/store';
 import qs from 'qs';
 import outLogin from '@/services/outLogin'
 
-let baseURL = config.baseUrl;
+let baseURL = config.apidomain;
 // 创建axios实例
 let service = axios.create({
   baseURL: baseURL, // api的base_url
@@ -14,8 +13,6 @@ let service = axios.create({
     'Authorization': store.state.token,
   },
 })
-
-
 
 // 请求拦截器
 service.interceptors.request.use(config => {
@@ -28,7 +25,6 @@ service.interceptors.request.use(config => {
 
   return config;
 }, error => {
-  // Do something with request error
   console.log(error) // for debug
   Promise.reject(error)
 })

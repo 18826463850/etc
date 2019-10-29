@@ -25,6 +25,7 @@ export const setUser =(state, data) => {
 
   let user = state.user || {};
   Object.assign(user,data);
+  console.log('user',user,'user')
   state.user = user;
   localStore.set('user',user);
 }

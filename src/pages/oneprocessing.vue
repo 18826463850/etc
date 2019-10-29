@@ -40,7 +40,8 @@
 
 
 import { Button,  Popup, Picker, Area } from "@/vant";
-import {checkCarBrand,tip} from '@/utils'
+// import {checkCarBrand,tip} from '@/utils';
+import {tip} from '@/utils';
 import carAddrListx from  '@/core/carAddrListx'
 
 export default {
@@ -189,10 +190,10 @@ export default {
         //绑定车牌
         carInfo.licencePlate = carInfo.carAddr + carInfo.carNumber;
 
-        if(!checkCarBrand(carInfo.licencePlate)){
-          tip("车牌号格式不正确");
-          return;
-        }
+        // if(!checkCarBrand(carInfo.licencePlate)){
+        //   tip("车牌号格式不正确");
+        //   return;
+        // }
 
        
         let localCarInfo =  this.$store.getx('carInfo') ||{};

@@ -1,5 +1,5 @@
-import http from './http'
-
+import http from './http'    // 赤兔易行接口请求
+import request from './request'   // 易行易停接口请求
 
 export * from './applyApi/yunnanApi'
  
@@ -33,7 +33,7 @@ export const getEtcCard = (data) => http.get(`/api/etcCardCat/details/${data.id}
 /**
  * 登录
  */
-export const login = (data)=>  http.post("/api/sso/login", data);
+export const login = (data)=>  request.post("/api/sso/login", data);
 
 /**
  * 登录
@@ -44,13 +44,13 @@ export const getPublicProfile = (data)=>  http.get("/api/sso/getPublicProfile", 
 /**
  * 退出登录
  */
-export const outLogin = (data)=>  http.post("/api/sso/outlogin", data);
+export const outLogin = (data)=>  request.post("/api/sso/outlogin", data);
 
 
 /**
  * 发送验证码
  */
-export const sendCode = (data)=>  http.get("/api/sso/sendCode/"+data);
+export const sendCode = (data)=>  request.get("/api/sso/sendCode/"+data);
 
 
 /**
@@ -79,7 +79,7 @@ export const saveApplyInfo = (data)=>  http.post("/api/applyInfo/saveApplyInfo",
 /**
  * 查询申请记录
  */
-export const selectApplyRecord = (data)=>  http.post("/api/applyInfo/selectApplyRecord", data,true);
+export const selectApplyRecord = (data)=>  request.post("/api/applyInfo/selectApplyRecord", data,true );
 
 
 /**
@@ -91,7 +91,7 @@ export const validToken = (data) => http.post("/api/sso/validToken", data);
 /**
  * 微信预支付    example {applyId:111,code:''}
  */
-export const prePay = (data) => http.post("/api/etcWechatpay/pubPrepay", data,true);
+export const prePay = (data) => request.post("/wx/wechatpay/unifiedorder", data,true);
 
 
 /**
@@ -182,7 +182,7 @@ export const resetPass = (data) => http.post('/api/etcUser/forgetPass',data)
 /**
  * 绑定手机号
  */
-export const bindMobile = (data) => http.post(`/api/etcUser/bindMobile`, data,true);
+export const bindMobile = (data) => request.post(`/api/etcUser/bindMobile`, data,true);
 
 /**
  * 修改用户信息

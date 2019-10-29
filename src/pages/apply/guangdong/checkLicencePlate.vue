@@ -87,16 +87,14 @@
         carInfo.licencePlate = carInfo.licencePlateArr.join('');
       }
 
-
-
-
       return {
         applyId:"",
         btnDisabled: true,
         licencePlate: carInfo.licencePlate,
         carType: "blue",
         carProps: "1",
-        carInfo: carInfo
+        carInfo: carInfo,
+        doing: false
       };
     },
 
@@ -113,7 +111,6 @@
         deep: true
       },
 
-
       licencePlate(v) {
         this.carInfo.licencePlate = v;
         this.carInfo.licencePlateType = v.length == 8 ?  4 : 0;
@@ -122,7 +119,6 @@
       ["carInfo.licencePlate"](v) {
         this.licencePlate = v;
       },
-
 
     },
 
@@ -143,8 +139,6 @@
     },
     methods: {
 
-
-
       //定时保存
       saveCarInfo() {
         setTimer("carInfoTimer", () => {
@@ -161,8 +155,6 @@
         this.carInfo = carInfo;
  
       },
-
-
 
       //检查是否可以提交
       checkIsSubmit() {
@@ -187,10 +179,6 @@
         }
        
       },
-
-
-     
-
 
       async  nextAction() {
 
@@ -226,9 +214,7 @@
         }else{
           tip(data && data.message || "检测失败");
         }
-      }
-
-
+      },
     }
   };
 </script>

@@ -33,10 +33,10 @@ let config = {
     appVersion:"1.0.2",
 
     
-    webTitle:"ETC联云",
+    webTitle:"易行易停",
 
     //微信公众号appid wx5398aad200d1669b wx1c2c5188fd27b150
-    appId:"wx5398aad200d1669b",
+    appId:"wx86dc02afc38155b2",
  
     //设置环境
     setEnv (env){

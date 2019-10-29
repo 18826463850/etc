@@ -6,7 +6,7 @@ export default [
         hidden: true,
         meta: {
             title: '地区选择',
-         
+
         }
     },
     {
@@ -31,7 +31,7 @@ export default [
 
 
 
-    
+
     {
         path: '/keyboardDemo',
         component: () => import('@/pages/keyboardDemo'),
@@ -49,8 +49,8 @@ export default [
         hidden: true,
         meta: {
             title: '登录测试'
-       
-        }   
+
+        }
     },
     {
         path: '/upload',
@@ -58,7 +58,7 @@ export default [
         hidden: true,
         meta: {
             title: '上传图片',
-          
+
         }
     },
 
@@ -69,7 +69,7 @@ export default [
         meta: {
             title: '中国银联',
             requireAuth: true
-          
+
         }
     },
     {
@@ -79,7 +79,7 @@ export default [
         meta: {
             title: '中国银联',
             requireAuth: true
-          
+
         }
     },
 

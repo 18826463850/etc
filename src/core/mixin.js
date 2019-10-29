@@ -34,9 +34,6 @@ let mixin = {
             let pathname = window.location.pathname;
             let name = pathname.indexOf('_')>-1 && pathname.split('_')[0].replace('/','');
             let thisStepRouters = applyRouter[name];
-
-            console.log(thisStepRouters);
-        
             if(thisStepRouters){
                 length = thisStepRouters.length;
                 thisStepRouters.forEach((d , i)=>{
@@ -46,7 +43,7 @@ let mixin = {
                     }
                 })
             }
-
+            console.log(nextStepPath,'nextStepPath')
             if(nextStepPath){
 
                 if (query) {

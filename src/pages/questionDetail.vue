@@ -1,6 +1,6 @@
 <template>
   <div class="page page-questiondetail">
-    <headNav :title="title"> </headNav>
+    <headNav :title="title"></headNav>
     <div class="main">
       {{content}}
       <!-- <div class="content" v-if="id==1">
@@ -59,80 +59,62 @@
         <p>
           支持全国29省高速通行（西藏没有高速、海南高速免费、港澳台暂无高速计划）。
         </p>
-      </div> -->
-
-
+      </div>-->
     </div>
-
   </div>
 </template>
 <script>
- 
-  export default {
-    name: "morequestion",
-    components: {
+import { replaceAll } from "@/utils";
+export default {
+  name: "morequestion",
+  components: {},
 
-    },
+  data() {
+    let title = "",
+      content = "";
+    let id = this.$route.query.id || -1;
+    let item = this.getItemById(id);
 
-    data() {
+    if (item) {
+      this.$route.meta.title = item.question;
+      document.title = title = item.question;
+      content = replaceAll(item.answer);
+    }
 
-      let title = '',content = '';
-      let id = this.$route.query.id || -1;
-      let item = this.getItemById(id);
+    return {
+      id,
+      title,
+      content
+    };
+  },
 
+  mounted(e) {},
 
-
-      if (item) {
-        this.$route.meta.title = item.question;
-        document.title = title = item.question;
-        content = item.answer;
- 
-      }
-
-      return {
-        id,title,content
-       
-      }
-    },
-
-
-
-    mounted(e) {
-
-
-    },
-
-
-
-    methods: {
-
-      getItemById(id) {
-        let item = this.$store.getx('activeQue');
-        if(item && item.id == id) return item;
-        
-      }
-
+  methods: {
+    getItemById(id) {
+      let item = this.$store.getx("activeQue");
+      if (item && item.id == id) return item;
     }
   }
+};
 </script>
 <style lang="scss" scoped>
-  .page-questiondetail {
-    .main{
-      padding:36px;
+.page-questiondetail {
+  .main {
+    padding: 36px;
+  }
+  .content {
+    line-height: 2em;
+    p {
+      text-indent: 2em;
     }
-    .content {
-      
-      line-height:2em;
-      p{
-        text-indent:2em;
-      }
-      .img-box{
-        text-align:center;
-        img{
-          width:374px;
-          height:402px;
-        }
+    .img-box {
+      text-align: center;
+      img {
+        width: 374px;
+        height: 402px;
       }
     }
   }
+}
 </style>

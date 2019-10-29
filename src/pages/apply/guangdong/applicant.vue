@@ -45,7 +45,7 @@
         <div class="form-item">
           <div class="form-tit">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
           <div class="form-ipt">
-            <input type="text" placeholder="请输入地址" v-model="applyInfo.address" />
+            <input type="text" placeholder="请输入地址" v-model="applyInfo.idAddress" />
           </div>
         </div>
       </div>
@@ -257,7 +257,7 @@ export default {
           idTypeName: "身份证",
           idCard: data.num,
           idCardNo: data.num,
-          address: data.address
+          idAddress: data.address
         });
 
         this.setIdCardInfo(applyInfo);
@@ -350,7 +350,7 @@ export default {
     checkIsSubmit() {
       let disabled = false;
       let applyInfo = this.applyInfo;
-      let required = "applyInfoName,idCardRightImg,idCardWrongImg,idCard,mobile,address".split(
+      let required = "applyInfoName,idCardRightImg,idCardWrongImg,idCard,mobile,idAddress".split(
         ","
       );
       for (let d in applyInfo) {
@@ -451,7 +451,7 @@ export default {
         }
       }
 
-      if (!applyInfo.address) {
+      if (!applyInfo.idAddress) {
         tip("请输入身份证地址");
         return;
       }
@@ -466,7 +466,7 @@ export default {
         return;
       }
 
-      if (applyInfo.address.length > 100) {
+      if (applyInfo.idAddress.length > 100) {
         tip("身份证地址不能大于100个字符");
         return;
       }

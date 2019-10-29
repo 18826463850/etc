@@ -5,7 +5,7 @@
         <div class="bg">
           <van-swipe :autoplay="3000" indicator-color="white" class="swipe">
             <van-swipe-item v-for="(image, index) in images" :key="index">
-              <img :src="image" @click="goAttention()"/>
+              <img :src="image" @click="goAttention()" />
             </van-swipe-item>
           </van-swipe>
         </div>
@@ -119,8 +119,8 @@ export default {
     closeImgPreview() {
       this.showImgPreview = false;
     },
-    goAttention(){
-      this.go("/attentionUs")
+    goAttention() {
+      this.go("/attentionUs");
     },
   }
 };
@@ -155,7 +155,7 @@ export default {
       max-width: 100%;
     }
 
-    div{
+    div {
       color: #fff;
       position: fixed;
       bottom: 0;

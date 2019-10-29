@@ -35,11 +35,11 @@
                 >审核未通过</div>
                 <div class="s-status" v-else-if="item.applyStatus==2 && item.status === '70'">已取消</div>
 
-                <div
+                <!-- <div
                   v-if="(item.applyStatus==2 || item.applyStatus == 3) && (item.status !=='60' || item.status !=='70')"
                   class="checkProgress"
                   @click="toLink(item,'applicationProgress')"
-                >查看进度</div>
+                >查看进度</div> -->
                 <div
                   v-else-if="item.applyStatus==1 && item.status=='1'"
                   @click="toLink(item,item.code + '_bindBank')"
@@ -116,19 +116,19 @@ export default {
       this.go(path + `?applyId=${applyId}&channel=${channel}`);
     },
 
-   update(item, index) {
-      if(item.code == "guangdong"){
-        this.updateGd(item , index);
-      }else{
-        this.updateYn(item , index);
+    update(item, index) {
+      if (item.code == "guangdong") {
+        this.updateGd(item, index);
+      } else {
+        this.updateYn(item, index);
       }
     },
 
     async updateGd(item, index) {
       showLoading("刷新中");
       let res = await this.$api.checkOrderGuangDong({
-          applyId: item.applyId
-        });
+        applyId: item.applyId
+      });
 
       let data = res && res.data;
       hideLoading();
@@ -147,8 +147,8 @@ export default {
     async updateYn(item, index) {
       showLoading("刷新中");
       let res = await this.$api.checkOrderYunnan({
-          applyId: item.applyId
-        });
+        applyId: item.applyId
+      });
 
       let data = res && res.data;
       hideLoading();

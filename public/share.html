@@ -1,15 +1,17 @@
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<title>赤兔易行</title>
+<title>易行易停</title>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
 <script src="https://sale.flnet.com/cdn/template/mb/js/libs.js"></script>
-<meta name="keywords" content="赤兔易行" />
-<meta name="description" content="赤兔易行 免费申请etc卡">
+<meta name="keywords" content="易行易停" />
+<meta name="description" content="易行易停 免费申请etc卡">
+
 <body>
     <h1>微信分享</h1>
-    <input type="hidden" id="shareImgUrl"  value="https://sale.flnet.com/cdn/images/wxshare.jpg"/>
+    <input type="hidden" id="shareImgUrl" value="https://sale.flnet.com/cdn/images/wxshare.jpg" />
     <script type="text/javascript">
         function bindWxShare(signPackage) {
 
@@ -106,13 +108,13 @@
         $.ajax({
 
 
-            data:{
-                shareUrl:window.location.href.split('#')[0]
+            data: {
+                shareUrl: window.location.href.split('#')[0]
             },
-            url:"http://api.sit.etc-cloud.com/api/etcWechatShare/wechatShare",
-            success(data){
+            url: "http://api.sit.etc-cloud.com/api/etcWechatShare/wechatShare",
+            success(data) {
 
-                if(data && data.code == 200){
+                if (data && data.code == 200) {
                     data = data.data;
                     console.log(data);
                     bindWxShare(data)

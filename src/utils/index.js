@@ -1,16 +1,16 @@
-import  MD5  from "blueimp-md5";
-import  * as ui  from "./ui";
+import MD5 from "blueimp-md5";
+import * as ui from "./ui";
 import *as bank from "./checkBankCard"
 
-export const  store =  require("./store");
+export const store = require("./store");
 
 let utils = {};
-let timerList= {};
+let timerList = {};
 
- Object.assign(utils, ui, store , bank);
+Object.assign(utils, ui, store, bank);
 
-export { tip ,showLoading,hideLoading}  from "./ui";
-export {getBankCardInfo} from "./checkBankCard"
+export { tip, showLoading, hideLoading } from "./ui";
+export { getBankCardInfo } from "./checkBankCard"
 
 /**
  * 定时执行函数
@@ -18,18 +18,18 @@ export {getBankCardInfo} from "./checkBankCard"
  * @param {function} fn 执行函数
  * @param {number} delay 延时多少毫秒执行
  */
-export  const setTimer =(key,fn,delay = 300)=>{
-    if(timerList[key]){
-       clearTimeout(timerList[key]);
+export const setTimer = (key, fn, delay = 300) => {
+    if (timerList[key]) {
+        clearTimeout(timerList[key]);
     }
 
-    timerList[key] = setTimeout(()=>{
-      if(typeof fn =='function'){
-        fn();
-        timerList[key] = null;
-      }
-      
-    },delay);
+    timerList[key] = setTimeout(() => {
+        if (typeof fn == 'function') {
+            fn();
+            timerList[key] = null;
+        }
+
+    }, delay);
 };
 
 
@@ -324,23 +324,23 @@ export const linkParams = (params) => {
 }
 
 
- 
+
 /**
  * 删除链接
  * @param {string} url 
  * @param {array} delParams 
  */
-export const delUrlParams = (url,delParams)=>{
+export const delUrlParams = (url, delParams) => {
 
     let urlA = url.split('?');
-    let params =urlA[1] &&  urlA[1].split('&');
-    
-    if(urlA.length==1) return url;
+    let params = urlA[1] && urlA[1].split('&');
+
+    if (urlA.length == 1) return url;
 
     for (let i = 0; i < params.length; i++) {
-          if(delParams.indexOf(params[i].split('=')[0])>-1){
-            params.splice(i--,1);
-          }
+        if (delParams.indexOf(params[i].split('=')[0]) > -1) {
+            params.splice(i--, 1);
+        }
     }
 
     return urlA[0] + (params.length ? '?' + params.join('&') : "");
@@ -537,7 +537,7 @@ export const downTime = (options) => {
  * Created by jiachenpan on 16/11/18.
  */
 
-export const parseTime =(time, cFormat)=> {
+export const parseTime = (time, cFormat) => {
     if (arguments.length === 0) {
         return null
     }
@@ -573,7 +573,7 @@ export const parseTime =(time, cFormat)=> {
     return time_str
 };
 
-export const formatTime =(time, option)=> {
+export const formatTime = (time, option) => {
     time = +time * 1000
     const d = new Date(time)
     const now = Date.now()
@@ -598,30 +598,30 @@ export const formatTime =(time, option)=> {
 
 
 //验证银行卡号
-export const checkBankNo = (number)=>{
-    return  /^([1-9]{1})[0-9]{14,19}$/.test(number);
+export const checkBankNo = (number) => {
+    return /^([1-9]{1})[0-9]{14,19}$/.test(number);
 }
 
 //验证手机短信验证码
-export const checkValidCode = (code)=>{
- return  /^[0-9]{6}$/.test(code);
+export const checkValidCode = (code) => {
+    return /^[0-9]{6}$/.test(code);
 };
 
 //验证手机号码
-export const  checkMobile =(mb)=> {
+export const checkMobile = (mb) => {
     return /^[1][3456789][0-9]{9}$/.test(mb)
 };
 
 // 真实姓名
-export const checkName =( v ) =>{
-    return !v || /^[\u4e00-\u9fa5]{2,15}$/.test( v );
+export const checkName = (v) => {
+    return !v || /^[\u4e00-\u9fa5]{2,15}$/.test(v);
 }
 
 //验证护照号码
-export const checkPassport =(code)=>{
-    if(!code || !/^((1[45]\d{7})|(G\d{8})|(P\d{7})|(S\d{7,8}))?$/.test(code)){
-      return false;
-    }else{
+export const checkPassport = (code) => {
+    if (!code || !/^((1[45]\d{7})|(G\d{8})|(P\d{7})|(S\d{7,8}))?$/.test(code)) {
+        return false;
+    } else {
         return true;
     }
 };
@@ -630,7 +630,7 @@ export const checkPassport =(code)=>{
  * 份证号码验证
  * @param {string} cardNo 
  */
-export const checkIdCard = (cardNo)=>{
+export const checkIdCard = (cardNo) => {
     var idreg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
     return idreg.test(cardNo);
 };
@@ -640,27 +640,27 @@ export const checkIdCard = (cardNo)=>{
  * 车牌号验证方法
  * @param {*} vehicleNumber 
  */
-export const checkLicencePlate =(vehicleNumber)=> {
+export const checkLicencePlate = (vehicleNumber) => {
 
-    var xreg=/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
-  
-    var creg=/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
- 
-    if(vehicleNumber.length == 7){
- 
-      return creg.test(vehicleNumber);
-  
-    } else if(vehicleNumber.length == 8){
-  
-      return xreg.test(vehicleNumber);
-  
-    } else{
-  
-      return false;
-      
+    var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+
+    var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+
+    if (vehicleNumber.length == 7) {
+
+        return creg.test(vehicleNumber);
+
+    } else if (vehicleNumber.length == 8) {
+
+        return xreg.test(vehicleNumber);
+
+    } else {
+
+        return false;
+
     }
-  
-  };
+
+};
 
 
 
@@ -684,7 +684,7 @@ export const deepClone = (obj) => {
  * 对象转换为数组
  * @param {object} obj 
  */
-export const objectToArray = (obj)=> {
+export const objectToArray = (obj) => {
 
     let i;
     let list = [];
@@ -703,31 +703,31 @@ export const objectToArray = (obj)=> {
  * 封装默认传参
  * @param {object} options 
  */
-export const extendOptions = (options) =>{
-    let _options ={
-        success:function(){},
-        fail:function(){},
-        complete:function(){}
+export const extendOptions = (options) => {
+    let _options = {
+        success: function () { },
+        fail: function () { },
+        complete: function () { }
     };
-    if(options &&  isObject(options) ){
+    if (options && isObject(options)) {
         for (let o in _options) {
             if (options[o] === undefined) {
                 options[o] = _options[o];
             }
         }
-    }else{
-        options =_options
+    } else {
+        options = _options
     }
-    return  options ;
+    return options;
 }
 
 
- 
+
 /**
  * 过滤价格小数点后面0
  * @param {*} price 
  */
-export const filterPrice =(price)=> {
+export const filterPrice = (price) => {
     price = '' + price;
     price = price.replace(/\.[0]+$/, '');
     price = price.replace(/(\.[0-9]+)[0]+$/, '$1');
@@ -739,7 +739,7 @@ export const filterPrice =(price)=> {
  * 价格保留2位小数
  * @param {*} price 
  */
-export const priceTwo =(price)=> {
+export const priceTwo = (price) => {
 
     if (!/\.[0-9]{2}[1-9]$/.test(price + "")) {
         price = (+price).toFixed(2);
@@ -752,8 +752,8 @@ export const priceTwo =(price)=> {
  */
 export const pushHistory = () => {
     let state = {
-      title: '',
-      url: ''
+        title: '',
+        url: ''
     }
     window.history.pushState(state, state.title, state.url)
 };
@@ -761,7 +761,7 @@ export const pushHistory = () => {
 /**
  * 判断是否为微信环境
  */
-export const isInWeiXin = ()=>{
+export const isInWeiXin = () => {
     let ua = navigator.userAgent.toLowerCase();
     return ua.match(/MicroMessenger/i) == "micromessenger";
 };
@@ -770,9 +770,9 @@ export const isInWeiXin = ()=>{
  * 字符串 转日期 20180812  输出 2018-08-12
  * @param {*} dateStr 
  */
-export const stringToDate = (dateStr)=>{
-  
-    return dateStr.replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3');
+export const stringToDate = (dateStr) => {
+
+    return dateStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
 }
 
 /**
@@ -790,11 +790,11 @@ export const getNameByCard = (item) => {
     else if (province == '广东省') {
         name = "guangdong";
     }
-    
+
     else if (province == '云南省') {
         name = 'yunnan';
     }
-    else if(province == '江西省'){
+    else if (province == '江西省') {
         name = 'jiangxi';
     }
 
@@ -803,13 +803,13 @@ export const getNameByCard = (item) => {
 
 export const getCarType = (seat) => {
     let carType = '';
-    if(seat <= 7){
+    if (seat <= 7) {
         carType = '1';
-    }else if(seat > 7 && seat <= 19){
+    } else if (seat > 7 && seat <= 19) {
         carType = '2';
-    }else if(seat > 19 && seat <= 39){
+    } else if (seat > 19 && seat <= 39) {
         carType = '3';
-    }else if(seat > 39){
+    } else if (seat > 39) {
         carType = '4';
     }
     return carType;
@@ -817,9 +817,9 @@ export const getCarType = (seat) => {
 
 
 //压缩图片
-export const compressImage = (file, success, error , quality) => {
+export const compressImage = (file, success, error, quality) => {
     // 图片小于1M不压缩
-    if (file.size < 299*1024) {
+    if (file.size < 299 * 1024) {
         return success(file);
     }
 
@@ -828,12 +828,12 @@ export const compressImage = (file, success, error , quality) => {
     reader.readAsDataURL(file);
     reader.onload = (e) => {
         const src = e.target.result;
-        
+
         const img = new Image();
         img.src = src;
         img.onload = (e) => {
-            const w = img.width/2;
-            const h = img.height/2;
+            const w = img.width / 2;
+            const h = img.height / 2;
 
             console.log("====================================");
             console.log(quality + "and" + w + "and" + h);
@@ -861,7 +861,7 @@ export const compressImage = (file, success, error , quality) => {
             const base64 = canvas.toDataURL('image/jpeg', quality); //图片格式jpeg或webp可以选0-1质量区间
 
             // 返回base64转blob的值
-            console.log(`原图${(src.length/1024).toFixed(2)}kb`, `新图${(base64.length/1024).toFixed(2)}kb`);
+            console.log(`原图${(src.length / 1024).toFixed(2)}kb`, `新图${(base64.length / 1024).toFixed(2)}kb`);
             //去掉url的头，并转换为byte
             const bytes = window.atob(base64.split(',')[1]);
             //处理异常,将ascii码小于0的转换为大于0
@@ -870,10 +870,10 @@ export const compressImage = (file, success, error , quality) => {
             for (let i = 0; i < bytes.length; i++) {
                 ia[i] = bytes.charCodeAt(i);
             }
-            file = new Blob( [ab] , {type : 'image/jpeg'});
+            file = new Blob([ab], { type: 'image/jpeg' });
             file.name = name;
 
-            success(file , (base64.length/1024) < 300 , quality);
+            success(file, (base64.length / 1024) < 300, quality);
         }
         img.onerror = (e) => {
             error(e);
@@ -884,7 +884,17 @@ export const compressImage = (file, success, error , quality) => {
     }
 }
 
-export default Object.assign(utils,{
+/**
+ * str 需要替换的字符串
+*/
+export const replaceAll = (str) => {
+    str = str.replace(/ETC联云--》|赤兔易行/gi, function (matched) {
+        return "易行易停";
+    });
+    return str;
+}
+
+export default Object.assign(utils, {
     isArray,
     isObject,
     getSign,
@@ -895,8 +905,9 @@ export default Object.assign(utils,{
     objectToArray,
     filterPrice,
     priceTwo,
-    pushHistory, 
+    pushHistory,
     getCarType,
     Base64,
     compressImage
 })
+

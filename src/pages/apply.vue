@@ -25,7 +25,6 @@
                 <div class="num">2</div>
                 <div class="txt">车辆资料</div>
               </div>
-
               <div class="step">
                 <div class="num">3</div>
                 <div class="txt">银行绑定</div>
@@ -34,10 +33,10 @@
                 <div class="num">4</div>
                 <div class="txt">收货资料</div>
               </div>
-              <div class="step active">
+              <!-- <div class="step active">
                 <div class="num">5</div>
                 <div class="txt">支付押金</div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -67,7 +66,8 @@
       <div class="content">
         <div class="card-list">
           <div
-            v-for="item in cardList" :key="item.name"
+            v-for="item in cardList"
+            :key="item.name"
             class="card"
             :class="{active:item.disable == false}"
             @click="selectcard(item)"
@@ -89,7 +89,7 @@
 <script>
 import { Button, Popup } from "@/vant";
 import carAddrList from "@/core/carAddrList";
-import { tip, showLoading, hideLoading, isInWeiXin } from "@/utils";
+import { tip, showLoading, hideLoading, isInWeiXin, replaceAll } from "@/utils";
 import { mapState } from "vuex";
 
 export default {
@@ -138,7 +138,12 @@ export default {
       if (data && data.code == 200 && data.data) {
         data = data.data;
         if (data.list) {
-          this.faqList = data.list;
+          let dataList = data.list;
+          for (let i = 0; i < dataList.length; i++) {
+            dataList[i].question = replaceAll(dataList[i].question);
+            dataList[i].answer = replaceAll(dataList[i].answer);
+          }
+          this.faqList = dataList;
         }
       }
     },
@@ -181,11 +186,7 @@ export default {
     selectcard(item) {
       let user = this.$store.state.user;
       let openId = user.openid;
-
-      console.log(user);
-
       if (item.disable) return;
-
       //云南省 强制微信登录
       if (item.province == "云南省" && !openId) {
         tip({
