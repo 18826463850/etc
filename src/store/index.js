@@ -19,8 +19,8 @@ let cardInfo  = localStore.get('cardInfo') || {};
 let activeApplyItem = localStore.get('activeApplyItem') ;
 let activeApplyId = localStore.get('activeApplyId') ;
 let validCode = localStore.get('validCode');
- 
-
+let cardName = localStore.get('cardName');
+let bankCardInfo = localStore.get('bankCardInfo') || null;
 
 const state = {
   token,
@@ -39,8 +39,9 @@ const state = {
   activeApplyId,
   validCode,
   userCache,
-  loginMode:''
-
+  loginMode:'',
+  cardName,
+  bankCardInfo,
 }
 
 const store = new Vuex.Store({

@@ -194,10 +194,30 @@ export const updateUserInfo = (data) => http.post(`/api/etcUser/update`, data,tr
  */
 export const getUserInfo = (data) => http.get(`/api/etcUser/getUserInfo`, data,true);
 
+/**
+ * 获取交通银行信用卡网络发卡请求参数
+ */
+export const apicardparam = (data) => request.get(`/etc/ecard/apicardparam`, data);
 
+/**
+ * 登记信息，确认办理信用卡的姓名和身份证
+ */
+export const checkin = (data) => request.post(`/etc/ecard/checkin`, data,true);
 
+/**
+ * 获取当前用户是否登记过该信用卡的信息，如果有则直接返回登记的信息
+ */
+export const checkcreditcard = (data) => request.get(`/etc/ecard/checkcreditcard`, data);
 
+/**
+ * 获取该用户信用卡登记信息
+ */
+export const getcheckinfo = (data) => request.get(`/etc/ecard/getcheckinfo`, data);
 
+/**
+ * 跳转至信用卡信息填写页面
+ */
+export const submitinfo = (data) => request.get(`/etc/ecard/submitinfo`, data,true);
 
 
  

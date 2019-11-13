@@ -227,10 +227,10 @@ export default {
             if (isOver) {
               this.compress(file);
             } else {
-              if(quality < 0.1){
+              if (quality < 0.1) {
                 tip("图片格式不符合,请重新拍摄");
-              }else{
-                this.compress(file, quality/2);
+              } else {
+                this.compress(file, quality / 2);
               }
             }
           },

@@ -25,7 +25,7 @@ const constantRouterMap = [
 
         meta: {
             title: config.webTitle,
-             requireAuth: false,
+            requireAuth: false,
         }
     },
     {
@@ -56,7 +56,7 @@ const constantRouterMap = [
 
         meta: {
             title: "设备激活",
-            requireAuth:true
+            requireAuth: true
         }
     },
     {
@@ -66,7 +66,7 @@ const constantRouterMap = [
 
         meta: {
             title: "设备激活",
-            requireAuth:true
+            requireAuth: true
         }
     },
     {
@@ -86,7 +86,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '会员中心',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -97,7 +97,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '个人资料',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -109,7 +109,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '验证已绑定手机号',
-            requireAuth:true,
+            requireAuth: true,
         }
     },
 
@@ -119,7 +119,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '忘记密码',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -130,7 +130,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '重置密码',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -141,7 +141,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '设置新密码',
-            requireAuth:true,
+            requireAuth: true,
         }
     },
 
@@ -151,7 +151,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '修改密码',
-            requireAuth:true,
+            requireAuth: true,
         }
     },
 
@@ -162,7 +162,7 @@ const constantRouterMap = [
         meta: {
             title: '新卡申办',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -172,7 +172,7 @@ const constantRouterMap = [
         meta: {
             title: 'ETC申请记录',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -182,7 +182,7 @@ const constantRouterMap = [
         meta: {
             title: '申请进度',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -192,7 +192,7 @@ const constantRouterMap = [
         meta: {
             title: '发行卡列表',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -202,7 +202,7 @@ const constantRouterMap = [
         meta: {
             title: 'ETC发票',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -212,7 +212,7 @@ const constantRouterMap = [
         meta: {
             title: 'ETC通行记录',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -222,7 +222,7 @@ const constantRouterMap = [
         meta: {
             title: '在线客服',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -231,8 +231,8 @@ const constantRouterMap = [
         component: () => import('@/pages/login'),
         hidden: true,
         meta: {
-            title:  config.webTitle+'登录'
-          
+            title: config.webTitle + '登录'
+
         }
     },
 
@@ -331,8 +331,8 @@ const constantRouterMap = [
         meta: {
             title: '申请成功',
             requireAuth: true,
-     
-        }   
+
+        }
     },
 
     {
@@ -342,7 +342,7 @@ const constantRouterMap = [
         meta: {
             title: '用户协议',
             requireAuth: true,
-        }   
+        }
     },
 
     {
@@ -352,11 +352,11 @@ const constantRouterMap = [
         meta: {
             title: '问题咨询',
             requireAuth: false,
-        }   
+        }
     },
 
     {
-        path:"/applicant",
+        path: "/applicant",
         component: () => import(`@/pages/applicant`),
         hidden: true,
         meta: {
@@ -370,10 +370,10 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '收货资料',
-           requireAuth: false,
+            requireAuth: false,
         }
     },
-    
+
 
     {
         path: '/pay',
@@ -382,10 +382,10 @@ const constantRouterMap = [
         meta: {
             title: '支付押金',
             requireAuth: true
-        }   
+        }
     },
 
-    
+
     {
         path: '/404',
         component: () => import('@/pages/404'),
@@ -408,7 +408,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '关于我们',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -428,7 +428,7 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '',
-            requireAuth:false,
+            requireAuth: false,
         }
     },
 
@@ -438,7 +438,27 @@ const constantRouterMap = [
         hidden: true,
         meta: {
             title: '关注我们',
-            requireAuth:false,
+            requireAuth: false,
+        }
+    },
+
+    {
+        path: '/applyCreditCard',
+        component: () => import('../pages/applyCreditCard'),
+        hidden: true,
+        meta: {
+            title: '申办信用卡',
+            requireAuth: false,
+        }
+    },
+
+    {
+        path: '/selectCreditCard',
+        component: () => import('../pages/selectCreditCard'),
+        hidden: true,
+        meta: {
+            title: '选择信用卡',
+            requireAuth: false,
         }
     },
 
@@ -464,7 +484,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
     //如果设置标题，拦截后设置标题
-    if (to.meta.title) { 
+    if (to.meta.title) {
         document.title = to.meta.title
     }
 
@@ -473,9 +493,9 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth && !store.state.token) {
 
         // 将跳转的路由path作为参数，登录成功后跳转到该路由
-    
+
         store.dispatch('outLogin');
-        
+
         next({
             path: '/login',
             query: {
@@ -492,7 +512,7 @@ router.beforeEach((to, from, next) => {
 })
 
 
-store.commit("routes",constantRouterMap);
+store.commit("routes", constantRouterMap);
 
 
 export default router

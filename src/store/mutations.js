@@ -30,6 +30,13 @@ export const setUser =(state, data) => {
   localStore.set('user',user);
 }
 
+export const setBankCardInfo =(state, data) => {
+  let bankCardInfo = state.bankCardInfo || {};
+  Object.assign(bankCardInfo,data);
+  state.bankCardInfo = bankCardInfo;
+  localStore.set('bankCardInfo',bankCardInfo);
+}
+
 export const setApplyInfo =(state, data ={}) => {
   let applyInfo = state.applyInfo;
   Object.assign(state.applyInfo,data);
@@ -77,4 +84,10 @@ export const setWxData = (state,data) => {
 export const setActiveApplyItem = (state,data)=>{
   state.activeApplyItem = data;
   localStore.set('activeApplyItem',data);
+}
+
+// 选择信用卡
+export const setCardName =(state, data) => {
+  state.cardName = data;
+  localStore.set('cardName',data);
 }

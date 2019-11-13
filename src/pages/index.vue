@@ -57,7 +57,7 @@
     </div>
     <div class="img-preview-index" v-show="showImgPreview">
       <div class="img-close" @click="closeImgPreview">X</div>
-      <img src="../assets/images/newrun_wechat_scan.png" />
+      <img src="../assets/images/newrun_wechat_scan.jpg" />
       <div>请长按二维码关注公众号</div>
     </div>
   </div>
@@ -86,9 +86,9 @@ export default {
   data() {
     return {
       images: [
-        require("../assets/images/bg-green1.png"),
-        // require("../assets/images/bg-green2.jpg"),
-        require("../assets/images/bg-green3.png")
+        require("../assets/images/bg-green1.jpg"),
+        require("../assets/images/bg-green2.jpg"),
+        require("../assets/images/bg-green3.jpg")
       ],
 
       showImgPreview: false

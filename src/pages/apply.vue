@@ -68,8 +68,7 @@
           <div
             v-for="item in cardList"
             :key="item.name"
-            class="card"
-            :class="{active:item.disable == false}"
+            :class="(item.disable == false && item.id != 4) ? 'card active' : 'card'"
             @click="selectcard(item)"
           >
             <div class="card-wrap">
@@ -186,7 +185,7 @@ export default {
     selectcard(item) {
       let user = this.$store.state.user;
       let openId = user.openid;
-      if (item.disable) return;
+      if (item.disable || item.id == 4) return;
       //云南省 强制微信登录
       if (item.province == "云南省" && !openId) {
         tip({

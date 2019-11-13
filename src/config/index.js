@@ -1,6 +1,6 @@
 
 import store from 'store';
-import testConfig from './test'
+import testConfig from './debug'
 import devConfig from './dev'
 import prodConfig from './prod'
 
@@ -78,7 +78,7 @@ if(envs !='' && envs !=null ){
 
 //读取webpack配置
 //测试环境
-if (process.env.NODE_ENV == 'testing') {
+if (process.env.VUE_APP_TITLE == 'debug') {
     env = 0;
 }
 

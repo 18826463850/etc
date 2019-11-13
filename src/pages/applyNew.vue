@@ -157,6 +157,10 @@ export default {
     },
 
     async bindEtcCardList() {
+      let params = {
+        apply_carlicence: "",  // 车牌号码
+        apply_carlicencetyoe: "",  // 车牌号码类型：0：蓝；1：黄；2：黑；3：白；4:渐变绿色5:黄绿双拼6:蓝白渐变
+      }
       let res = await this.$api.getEtcCardList();
       let data = res && res.data;
 

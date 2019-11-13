@@ -277,7 +277,6 @@ export default {
       let user = this.$store.state.user;
       let openId = user.openid;
       // openId = "ogu3M1UlIzEXQG-y4ivPcuLai5Xs";
-
       if (this.yunnanServerLogin) return;
 
       if (!openId) {
@@ -298,7 +297,7 @@ export default {
         return;
       }
 
-      data = await this.$api.loginByWxInYunNan({ openId: openId });
+      data = await this.$api.loginByWxInYunNan({ openId: user.mobile });
       data = data && data.data;
 
       if (data && data.code == 200 && data.data && data.data.code == "000000") {
@@ -470,6 +469,7 @@ export default {
     nextAction() {
       let applyInfo = this.applyInfo;
       let catId = this.$store.state.catId;
+      let bankCardInfo = this.$store.getx("bankCardInfo");  // 信用卡申请信息
       this.catId = catId;
 
       if (!this.yunnanServerLogin) {
@@ -574,7 +574,12 @@ export default {
       let result, data, datas;
 
       showLoading("保存中...");
-
+      // 申办渠道 ：1传统渠道，2信用卡渠道
+      this.applyInfo.apply_channel = 2;
+      // 申办的信用卡：1交通银行信用卡，2表示***银行卡信用卡
+      this.applyInfo.apply_creditcard = 1;
+      // 申请信用卡流水账号
+      this.applyInfo.serialnum = bankCardInfo.serialnum;
       datas = {
         catId: this.catId,
         etcYnApplyInfoVO: this.applyInfo

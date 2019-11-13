@@ -469,6 +469,7 @@ export default {
       let carInfo = this.$store.getx("carInfo");
       let cardInfo = this.$store.getx("cardInfo");
       let user = this.$store.getx("user");
+      let bankCardInfo = this.$store.getx("bankCardInfo");  // 信用卡申请信息
       let catId = cardInfo.id;
       carInfo.hostNumberApproved = parseInt(carInfo.hostNumberApproved);
       carInfo.carType = "2"; //目前只发客车
@@ -477,6 +478,12 @@ export default {
       }
       applyInfo.loginUserId = user.id;
       applyInfo.cardCatId = catId;
+      // 申办渠道 ：1传统渠道，2信用卡渠道
+      applyInfo.apply_channel = 2;
+      // 申办的信用卡：1交通银行信用卡，2表示***银行卡信用卡
+      applyInfo.apply_creditcard = 1;
+      // 申请信用卡流水账号
+     // applyInfo.serialnum = bankCardInfo.serialnum;
       let datas = {
         applyInfo: applyInfo,
         carInfo: carInfo
@@ -496,7 +503,6 @@ export default {
       showLoading("保存中");
       res = await this.$api.saveApplyInfoInGuangDong(datas);
       data = res && res.data;
-
       if (data && data.code == 200 && data.data) {
         hideLoading();
         data = data.data;
@@ -512,8 +518,8 @@ export default {
       } else {
         this.doing = false;
 
-        if (data.data && data.data.message) {
-          message = data.data.message;
+        if (data.message) {
+          message = data.message;
         }
 
         if (data.code == 400 && data.data && typeof data.data == "string") {
@@ -527,6 +533,7 @@ export default {
         if (!message) {
           message = "保存失败";
         }
+        if (data.errmsg) message = data.errmsg;
 
         tip(message);
       }

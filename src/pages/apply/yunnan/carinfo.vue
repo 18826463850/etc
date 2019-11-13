@@ -257,7 +257,8 @@ export default {
       licencePlate: carInfo.licencePlate,
       carType: "blue",
       carProps: "1",
-      carInfo: carInfo
+      carInfo: carInfo,
+      userInfo: "",
     };
   },
 
@@ -298,6 +299,8 @@ export default {
 
   mounted() {
     let bindBankStatus = this.$store.getx("bindBankStatus");
+    let user = this.$store.getx("user");
+    if (user) this.userInfo = user;
     if (bindBankStatus) {
       this.$store.removex("bindBankStatus");
     }
@@ -482,6 +485,7 @@ export default {
       let applyInfo = this.$store.getx("applyInfo");
       let carInfo = this.$store.getx("carInfo");
       let cardInfo = this.$store.getx("cardInfo");
+      let bankCardInfo = this.$store.getx("bankCardInfo"); // 信用卡申请信息
       let catId = cardInfo.id;
 
       if (!this.applyId) {
@@ -489,11 +493,19 @@ export default {
       }
 
       applyInfo.registeredType = 1;
+      // 申办渠道 ：1传统渠道，2信用卡渠道
+      applyInfo.apply_channel = 2;
+      // 申办的信用卡：1交通银行信用卡，2表示***银行卡信用卡
+      applyInfo.apply_creditcard = 1;
+      // 申请信用卡流水账号
+      applyInfo.serialnum = bankCardInfo.serialnum;
+
 
       let datas = {
         catId: catId,
         etcYnApplyInfo: applyInfo,
-        etcYnCarInfo: carInfo
+        etcYnCarInfo: carInfo,
+        userId: this.userInfo.id,
       };
       return datas;
     },
@@ -511,7 +523,10 @@ export default {
         hideLoading();
         data = data.data;
         console.log(data);
-        if (data) this.$store.commit("setApplyInfo", { id: data.applyId });
+        if (data){
+          this.$store.commit("setApplyInfo", { id: data.applyId });
+          this.$store.commit("setApplyInfo", { niurunApplyId: data.niurunApplyId });
+        }
         this.$store.commit("setCarInfo", { id: data.carId });
         this.nextApplyStep();
       } else {

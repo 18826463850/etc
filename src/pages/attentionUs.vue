@@ -2,10 +2,10 @@
   <div class="page page-attention">
     <div class="content">
       <img src="../assets/images/attention_header_backgroud.gif" />
-      <img src="../assets/images/attention_header.gif" class="img-view"/>
+      <!-- <img src="../assets/images/attention_header.gif" class="img-view"/> -->
       <div class="detail">
         <img src="../assets/images/attention_content.gif" class="img-view"/>
-        <span> &nbsp; &nbsp; &nbsp; "ETC联云"是纽润科技旗下所属ETC聚合发行平台,为用户提供ETC免费申请及安装渠道,并致力于打造一站式ETC出行、消费、金融生态圈。 </span>
+        <span> &nbsp; &nbsp; &nbsp; "ETC联云"是易停易行旗下所属ETC聚合发行平台,为用户提供ETC免费申请及安装渠道,并致力于打造一站式ETC出行、消费、金融生态圈。 </span>
       </div>
 
       <img src="../assets/images/attention_ad.gif" class="img-ad"/>
@@ -13,7 +13,7 @@
       <span class="title">关注即享特权</span>
 
       <div class="scan">
-        <img src="../assets/images/newrun_wechat_scan.png" class="scan-img"/>
+        <img src="../assets/images/newrun_wechat_scan.jpg" class="scan-img"/>
 
         <div class="tip">
           <div>①&nbsp; 长按识别二维码</div>

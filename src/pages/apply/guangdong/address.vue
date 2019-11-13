@@ -351,6 +351,7 @@
       nextAction() {
         let addr = this.shippingInfo;
         let user = this.$store.getx('user');  // 用户信息
+        let applyInfo = this.$store.getx('applyInfo');
         console.log(addr);
 
         if (!addr.applyId) {
@@ -400,6 +401,7 @@
         }
         //if(addr.carInfoId) delete addr.carInfoId;
         if (user.id) addr.loginUserId = user.id;
+        if (applyInfo.niurunApplyId) addr.niurunApplyId = applyInfo.niurunApplyId;
         this.$store.commit("setShippingInfo", addr);
         this.saveShipping(addr);
 

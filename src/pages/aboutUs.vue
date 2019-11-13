@@ -3,10 +3,10 @@
     <headNav> </headNav>
     <div class="main">
       <div class="form-box">
-        <img src="../assets/images/newrun.png" class="img" />
-        <div>
+        <!-- <img src="../assets/images/newrun.png" class="img" /> -->
+        <!-- <div>
           深圳市纽润科技有限公司 成立于 2009年，专注于交通行业信息化整体解决方案及城市智能交通产品，是移动出行专业化服务提供商。公司业务涵盖 智慧城市、智能交通、轨道交通、物联网、客流检测监控与预警等 多个领域，自2018年始，公司与业内相关公司精密合作，大力扩展 高速公路不停车收费（ETC）网上发行服务平台 在行业内的应用。
-        </div>
+        </div> -->
 
         <img src="../assets/images/address.png" class="img_address" />
 

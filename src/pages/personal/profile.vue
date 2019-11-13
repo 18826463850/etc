@@ -27,9 +27,9 @@
           </div>
         </div>
 
-        <div class="form-item item-btn">
+        <!-- <div class="form-item item-btn">
           <van-button type="primary" :loading="doing" class="btn-default btn-save" @click="save">保 存</van-button>
-        </div>
+        </div> -->
       </div>
 
       <div class="img-preview-profile" v-show="showImgPreview">
